@@ -57,4 +57,16 @@ RSpec.describe '7x7_Skyscrapers methods' do
     expect(check_main_game_rule(array8)).to eq true
   end
 
+  it 'should check is_puzzle_solved(clues, array)' do
+    array =  [ [1,5,6,7,4,3,2],
+               [2,7,4,5,3,1,6],
+               [3,4,5,6,7,2,1],
+               [4,6,3,1,2,7,5],
+               [5,3,1,2,6,4,7],
+               [6,2,7,3,1,5,4],
+               [7,1,2,4,5,6,3] ]
+    clues =  [7,0,0,0,2,2,3, 0,0,3,0,0,0,0, 3,0,3,0,0,5,0, 0,0,0,0,5,0,4]
+    expect(is_puzzle_solved(clues, array)).to eq true
+  end
+
 end

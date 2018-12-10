@@ -3,6 +3,26 @@ def solve_puzzle(clues)
   result_array
 end
 
+def is_puzzle_solved(clues, array)
+  #check main rule first
+  14.times do |line_number|
+    line_array = take_observer_array(line_number, array)
+    result = check_main_game_rule(line_array)
+    if result == false
+      return false
+    end
+  end
+  #check is clues lines have correct numbers
+  28.times do |key|
+    value = clues[key]
+    if value > 0
+      line_array = take_observer_array(key, array)
+      visible_skyscrapers = count_visible_skyscrapers(line_array)
+      return false if visible_skyscrapers != value
+    end
+  end
+  true
+end
 
 def take_observer_array(observer_position, full_array)
   result_array = []
@@ -48,6 +68,8 @@ end
 def check_main_game_rule(array_7_digits)
   [1,2,3,4,5,6,7] == array_7_digits.sort
 end
+
+
 
 #clues =  [7,0,0,0,2,2,3, 0,0,3,0,0,0,0, 3,0,3,0,0,5,0, 0,0,0,0,5,0,4]
 #result = solve_puzzle(clues)
